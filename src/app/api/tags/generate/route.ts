@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       } else {
         throw new Error('Response is not an array')
       }
-    } catch (parseError) {
+    } catch {
       // JSON 파싱 실패 시 줄바꿈이나 쉼표로 분리 시도
       const lines = responseText.split(/[,\n]/).map(line => line.trim().replace(/^["'\[#]|["'\]]#?$/g, ''))
       tags = lines.filter(line => line.length > 0 && line.length <= 20).slice(0, 6)
